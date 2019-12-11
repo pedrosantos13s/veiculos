@@ -1,3 +1,5 @@
+from matplotlib import pyplot
+
 file = open ("veiculos.txt", "r")
 
 ##Quantidade de veiculos cadastados##    
@@ -18,10 +20,12 @@ print ('Veículos disponíveis:' ,reservados)
 ## Quantos Corollas? ##     
 file.seek(0)
 j=1
+control=0
 corollas = 0
 while j < x+1:
     y = file.readline ()
-    if y.count ("False") and y.count ("Corolla"): 
+    control = y.count ("False") + y.count ("Corolla")
+    if control == 2: 
         corollas += 1 
     j += 1
 print ('Corollas disponíveis:',corollas)
@@ -30,9 +34,11 @@ print ('Corollas disponíveis:',corollas)
 file.seek(0)
 k=1
 ano = 0
+lista = []
 while k < x+1:
     y = file.readline ()
-    ano = ano + y.count ("2017")
+    lista = y.split("\t")
+    ano = ano + lista[5].count ("2017")
     k += 1
 print ('Veículos de 2017:' ,ano)
 
@@ -52,7 +58,7 @@ while (line != ""):
             placa = placa + 1
     else:
         break
-print ('Quantidade de veículos que não inicial a placa com a letra P:' ,placa)
+print ('Quantidade de veículos que não iniciam a placa com a letra P:' ,placa)
 
 veiculos_cadastrados = str(x-1)
 veiculos_disponiveis = str(reservados)
@@ -104,7 +110,15 @@ while (line != ""):
 #print (van)
 #print (ute)
 
-##Falta plotar o gráfico ACIMA
+tipos = ["carro","utilitário","van"]
+quantidade = [carro,ute,van]
+
+pyplot.figure(1)
+pyplot.bar(tipos,quantidade)
+pyplot.ylabel("Quantidade")
+pyplot.title("Quantidades de cada tipo de veículo")
+pyplot.savefig('tipo carro.jpg')
+
 
 
 ##Quantidade de veiculos reservados por modelo## 
@@ -125,7 +139,7 @@ onix = 0
 logan = 0
 corolla = 0
 
-
+control = 0
 lista = []
 line=file.readline()
 while (line != ""):
@@ -135,70 +149,72 @@ while (line != ""):
     if (l < 20001):
         plaka = lista[2]
         reservacarro = lista[9]
-        if reservacarro.count ("True") and plaka.count ("Uno") :
-            uno = uno + 1
-        if reservacarro.count ("True") and plaka.count ("Ducato"):
-            ducato = ducato + 1
-        if reservacarro.count ("True") and plaka.count ("Prisma"):
-            prisma = prisma + 1
-        if reservacarro.count ("True") and plaka.count ("Ka+"):
-            kam = kam + 1
-        if reservacarro.count ("True") and plaka.count ("Gol"):
-            gol = gol + 1
-        if reservacarro.count ("True") and plaka.count ("Civic"):
-            civic = civic + 1
-        if reservacarro.count ("True") and plaka.count ("Sprinter"):
-            sprinter = sprinter + 1
-        if reservacarro.count ("True") and plaka.count ("Spin"):
-            spin = spin + 1
-        if reservacarro.count ("True") and plaka.count ("Sandero"):
-            sandero = sandero + 1
-        if reservacarro.count ("True") and plaka.count ("Ka"):
-            ka = ka + 1
-        if reservacarro.count ("True") and plaka.count ("Onix"):
-            onix = onix + 1
-        if reservacarro.count ("True") and plaka.count ("Logan"):
-            logan = logan + 1
-        if reservacarro.count ("True") and plaka.count ("Corolla"):
-            corolla = corolla + 1
+        control = reservacarro.count ("True")
+        if control == 1:
+            if plaka == "Uno" :
+                uno = uno + 1
+            if plaka == "Ducato":
+                ducato = ducato + 1
+            if plaka == "Prisma":
+                prisma = prisma + 1
+            if plaka == "Ka+":
+                kam = kam + 1
+            if plaka == "Gol":
+                gol = gol + 1
+            if plaka == "Civic":
+                civic = civic + 1
+            if plaka == "Sprinter":
+                sprinter = sprinter + 1
+            if plaka == "Spin":
+                spin = spin + 1
+            if plaka == "Sandero":
+                sandero = sandero + 1
+            if plaka == "Ka":
+                ka = ka + 1
+            if plaka == "Onix":
+                onix = onix + 1
+            if plaka == "Logan":
+                logan = logan + 1
+            if plaka == "Corolla":
+                corolla = corolla + 1
     else:
         break
 
-print(uno)
-print(ducato)
-print(prisma)
-print(kam)
-print(gol)
-print(civic)
-print(sprinter)
-print(spin)
-print(sandero)
-print(ka)
-print(onix)
-print(logan)
-print(corolla)
+#print(uno)
+#print(ducato)
+#print(prisma)
+#print(kam)
+#print(gol)
+#print(civic)
+#print(sprinter)
+#print(spin)
+#print(sandero)
+#print(ka)
+#print(onix)
+#print(logan)
+#print(corolla)
 
+tipos = ["uno","Ducato","Prisma","Ka+","Gol","Civic","Sprinter","Spin","Sandero","Ka","Onix","Logan","Corolla"]
+quantidade = [uno,ducato,prisma,kam,gol,civic,sprinter,spin,sandero,ka,onix,logan,corolla]
+
+pyplot.figure(2)
+pyplot.bar(tipos,quantidade)
+pyplot.ylabel("Quantidade")
+pyplot.title("Quantidades de veículos reservados por modelo")
+pyplot.savefig('reservados por modelo.jpg')
 
 ##Quantidade de veiculos por ano de fabricação##
 
 
 file.seek(0)
 l = 0
-uno_2017 = 0
-ducato_2017 = 0
-prisma_2017 = 0
-kam_2017 = 0
-gol_2017 = 0
-civic_2017 = 0
-sprinter_2017 = 0
-spin_2017 = 0
-sandero_2017 = 0
-ka_2017 = 0
-onix_2017 = 0
-logan_2017 = 0
-corolla_2017 = 0
+carro_2017 = 0
+carro_2016 = 0
+carro_2015 = 0
+carro_2014 = 0
 
 
+l = 0
 lista = []
 line=file.readline()
 while (line != ""):
@@ -206,48 +222,94 @@ while (line != ""):
     y = file.readline ()
     lista = y.split("\t")
     if (l < 20001):
-        plaka = lista[2]
-        reservacarro = lista[O DO ANO]
-        if reservacarro.count ("True") and plaka.count ("Uno") :
-            uno_2017 = uno_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Ducato"):
-            ducato_2017 = ducato_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Prisma"):
-            prisma_2017 = prisma_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Ka+"):
-            kam_2017 = kam_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Gol"):
-            gol_2017 = gol_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Civic"):
-            civic_2017 = civic_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Sprinter"):
-            sprinter_2017 = sprinter_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Spin"):
-            spin_2017 = spin_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Sandero"):
-            sandero_2017 = sandero_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Ka"):
-            ka_2017 = ka_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Onix"):
-            onix_2017 = onix_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Logan"):
-            logan_2017 = logan_2017 + 1
-        if reservacarro.count ("True") and plaka.count ("Corolla"):
-            corolla_2017 = corolla_2017 + 1
+        if lista[5] == "2014":
+            carro_2014 += 1
+        if lista[5] == "2015":
+            carro_2015 += 1
+        if lista[5] == "2016":
+            carro_2016 += 1
+        if lista[5] == "2017":
+            carro_2017 += 1
     else:
         break
 
+#print(carro_2014)
+#print(carro_2015)
+#print(carro_2016)
+#print(carro_2017)
 
-print(uno_2017)
-print(ducato_2017)
-print(prisma_2017)
-print(kam_2017)
-print(gol_2017)
-print(civic_2017)
-print(sprinter_2017)
-print(spin_2017)
-print(sandero_2017)
-print(ka_2017)
-print(onix_2017)
-print(logan_2017)
-print(corolla_2017)
+
+tipos = ["2014","2015","2016","2017"]
+quantidade = [carro_2014,carro_2015,carro_2016,carro_2017]
+
+
+pyplot.figure(3)
+pyplot.bar(tipos,quantidade)
+pyplot.ylabel("Quantidade")
+pyplot.title("Quantidades veículos por ano de fabricação")
+pyplot.savefig('tipo carro por ano.jpg')
+
+
+##Média da autonomia por ano de fabricação em carros##
+
+
+file.seek(0)
+l = 0
+lista_2014 = []
+lista_2015 = []
+lista_2016 = []
+lista_2017 = []
+media_2014 = 0
+media_2015 = 0
+media_2016 = 0
+media_2017 = 0
+
+
+######autonomia = lista[4]
+l = 0
+lista = []
+line=file.readline()
+while (line != ""):
+    l += 1
+    y = file.readline ()
+    lista = y.split("\t")
+    if (l < 20001):
+        if lista[0] == "carro":
+            if lista[5] == "2014":
+                lista_2014.append(float(lista[4]))
+            if lista[5] == "2015":
+                lista_2015.append(float(lista[4]))
+                media_2015 = media_2015 + float(lista[4])
+            if lista[5] == "2016":
+                lista_2016.append(float(lista[4]))
+            if lista[5] == "2017":
+                lista_2017.append(float(lista[4]))
+    else:
+        break
+
+media_2014 = sum(lista_2014) / len(lista_2014)
+media_2015 = sum(lista_2015) / len(lista_2015)
+media_2016 = sum(lista_2016) / len(lista_2016)
+media_2017 = sum(lista_2017) / len(lista_2017)
+
+#print(media_2014)
+#print(media_2015)
+#print(media_2016)
+#print(media_2017)
+
+tipos = ["2014","2015","2016","2017"]
+quantidade = [media_2014,media_2015,media_2016,media_2017]
+
+
+pyplot.figure(4)
+pyplot.bar(tipos,quantidade)
+pyplot.ylabel("Média")
+pyplot.title("Média de autonomia por ano de fabricação, para carros")
+pyplot.savefig('media por ano defabricação.jpg')
+
+
+## tem q dar um pip intall pillow pra pegar jpg##
+pyplot.show()
+#pyplot.savefig('image.jpg')
+
+

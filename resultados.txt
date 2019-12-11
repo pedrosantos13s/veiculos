@@ -1,5 +1,5 @@
 Veículos cadastrados: 20000
-Veículos disponíveis: 17925
-Corollas disponíveis: 1533
-Veículos de 2017: 10077
+Veículos disponíveis: 17971
+Corollas disponíveis: 1536
+Veículos de 2017: 10083
 Quantidade de veículos que não inicial a placa com a letra P: 4051
