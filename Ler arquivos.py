@@ -135,31 +135,31 @@ while (line != ""):
     if (l < 20001):
         plaka = lista[2]
         reservacarro = lista[9]
-        if y.count ("True") and y.count ("Uno") :
+        if reservacarro.count ("True") and plaka.count ("Uno") :
             uno = uno + 1
-        if y.count ("True") and y.count ("Ducato"):
+        if reservacarro.count ("True") and plaka.count ("Ducato"):
             ducato = ducato + 1
-        if y.count ("True") and y.count ("Prisma"):
+        if reservacarro.count ("True") and plaka.count ("Prisma"):
             prisma = prisma + 1
-        if y.count ("True") and y.count ("Ka+"):
+        if reservacarro.count ("True") and plaka.count ("Ka+"):
             kam = kam + 1
-        if y.count ("True") and y.count ("Gol"):
+        if reservacarro.count ("True") and plaka.count ("Gol"):
             gol = gol + 1
-        if y.count ("True") and y.count ("Civic"):
+        if reservacarro.count ("True") and plaka.count ("Civic"):
             civic = civic + 1
-        if y.count ("True") and y.count ("Sprinter"):
+        if reservacarro.count ("True") and plaka.count ("Sprinter"):
             sprinter = sprinter + 1
-        if y.count ("True") and y.count ("Spin"):
+        if reservacarro.count ("True") and plaka.count ("Spin"):
             spin = spin + 1
-        if y.count ("True") and y.count ("Sandero"):
+        if reservacarro.count ("True") and plaka.count ("Sandero"):
             sandero = sandero + 1
-        if y.count ("True") and y.count ("Ka"):
+        if reservacarro.count ("True") and plaka.count ("Ka"):
             ka = ka + 1
-        if y.count ("True") and y.count ("Onix"):
+        if reservacarro.count ("True") and plaka.count ("Onix"):
             onix = onix + 1
-        if y.count ("True") and y.count ("Logan"):
+        if reservacarro.count ("True") and plaka.count ("Logan"):
             logan = logan + 1
-        if y.count ("True") and y.count ("Corolla"):
+        if reservacarro.count ("True") and plaka.count ("Corolla"):
             corolla = corolla + 1
     else:
         break
@@ -182,3 +182,72 @@ print(corolla)
 ##Quantidade de veiculos por ano de fabricação##
 
 
+file.seek(0)
+l = 0
+uno_2017 = 0
+ducato_2017 = 0
+prisma_2017 = 0
+kam_2017 = 0
+gol_2017 = 0
+civic_2017 = 0
+sprinter_2017 = 0
+spin_2017 = 0
+sandero_2017 = 0
+ka_2017 = 0
+onix_2017 = 0
+logan_2017 = 0
+corolla_2017 = 0
+
+
+lista = []
+line=file.readline()
+while (line != ""):
+    l += 1
+    y = file.readline ()
+    lista = y.split("\t")
+    if (l < 20001):
+        plaka = lista[2]
+        reservacarro = lista[O DO ANO]
+        if reservacarro.count ("True") and plaka.count ("Uno") :
+            uno_2017 = uno_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Ducato"):
+            ducato_2017 = ducato_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Prisma"):
+            prisma_2017 = prisma_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Ka+"):
+            kam_2017 = kam_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Gol"):
+            gol_2017 = gol_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Civic"):
+            civic_2017 = civic_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Sprinter"):
+            sprinter_2017 = sprinter_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Spin"):
+            spin_2017 = spin_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Sandero"):
+            sandero_2017 = sandero_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Ka"):
+            ka_2017 = ka_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Onix"):
+            onix_2017 = onix_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Logan"):
+            logan_2017 = logan_2017 + 1
+        if reservacarro.count ("True") and plaka.count ("Corolla"):
+            corolla_2017 = corolla_2017 + 1
+    else:
+        break
+
+
+print(uno_2017)
+print(ducato_2017)
+print(prisma_2017)
+print(kam_2017)
+print(gol_2017)
+print(civic_2017)
+print(sprinter_2017)
+print(spin_2017)
+print(sandero_2017)
+print(ka_2017)
+print(onix_2017)
+print(logan_2017)
+print(corolla_2017)
